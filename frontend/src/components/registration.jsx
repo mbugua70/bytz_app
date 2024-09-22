@@ -56,7 +56,7 @@ export const action = async ({ request }) => {
           html: <i>You have registered successfully!</i>,
           icon: "success",
         });
-      }, 2000);
+      }, 1500);
     }
 
     return redirect("/");
