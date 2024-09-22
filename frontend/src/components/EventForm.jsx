@@ -8,6 +8,7 @@ export default function EventForm({ inputData, onSubmit, children }) {
   function handleSubmit(event) {
     event.preventDefault();
     const registration_error_id = "login ba error";
+    const registration_error_id_two = "success form";
 
     const formData = new FormData(event.target);
 
@@ -23,7 +24,7 @@ export default function EventForm({ inputData, onSubmit, children }) {
         position: "bottom-center",
         closeButton: false,
         autoClose: 5000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -35,10 +36,10 @@ export default function EventForm({ inputData, onSubmit, children }) {
 
     const notifyErrorTwo = (msg) => {
       toast.success(`${msg}`, {
-        toastId: registration_error_id,
+        toastId: registration_error_id_two,
         position: "bottom-center",
         autoClose: 5000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeButton: false,
         closeOnClick: true,
         pauseOnHover: true,

@@ -23,7 +23,7 @@ const IndexPage = () => {
             <p>
               <NavLink
                 to="summary"
-                className="waves-effect block waves-light black btn-large w80"
+                className="waves-effect block waves-light black btn-large w80 animate__bounceIn"
               >
                 Day Summary
               </NavLink>
@@ -33,7 +33,7 @@ const IndexPage = () => {
             <p>
               <NavLink
                 to="rides"
-                className="waves-effect block waves-light orange  btn-large w80"
+                className="waves-effect block waves-light orange  btn-large w80 animate__bounceIn"
                 style={{ textAlign: "center" }}
               >
                 Test Rides
@@ -46,7 +46,7 @@ const IndexPage = () => {
             <p>
               <NavLink
                 to="fleet"
-                className="waves-effect waves-light purple  btn-large w80"
+                className="waves-effect waves-light purple  btn-large w80 animate__bounceIn"
               >
                 FLEET OWNERS
               </NavLink>
@@ -58,7 +58,7 @@ const IndexPage = () => {
             <p>
               <NavLink
                 to="park"
-                className="waves-effect waves-light  lime accent-4  btn-large w80"
+                className="waves-effect waves-light  lime accent-4  btn-large w80 animate__bounceIn"
               >
                 PARK MAPPING
               </NavLink>
@@ -70,7 +70,7 @@ const IndexPage = () => {
             <p>
               <NavLink
                 to="hotleads"
-                className="waves-effect waves-light teal darken-3  btn-large w80"
+                className="waves-effect waves-light teal darken-3  btn-large w80 animate__bounceIn"
               >
                 HOTLEADS
               </NavLink>
@@ -82,7 +82,7 @@ const IndexPage = () => {
             <p>
               <NavLink
                 to="registration"
-                className="waves-effect waves-light green  btn-large w80"
+                className="waves-effect waves-light green  btn-large w80 animate__bounceIn"
               >
                 Registration
               </NavLink>

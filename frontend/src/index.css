@@ -340,6 +340,10 @@
     background-color: #fff;
   }
 
+  .Toastify__toast--success{
+    color: #07bc0c !important;
+  }
+
   /* modal  */
 
   .modal-container{

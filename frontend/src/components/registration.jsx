@@ -74,7 +74,7 @@ const notifyError = (msg) => {
     toastId: registration_error_id,
     position: "bottom-center",
     autoClose: 5000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeButton: false,
     closeOnClick: true,
     pauseOnHover: true,

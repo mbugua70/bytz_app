@@ -20,7 +20,7 @@ const UserDetails = ({ userData, revalidator, onEdit }) => {
         <div className="profile">
           <div className="details">
             <div className="user">
-              <i className="material-icons">person</i>
+              <i className="material-icons ">person</i>
               <span className="user_name">Name</span>
             </div>
             <span className="user_detail users_input" id="ba_name">
