@@ -12,16 +12,15 @@ import RidesForm from "./ridesform";
 //     return defer({userData: getUserData()});
 // }
 
-const RidesPage = () => {
-  // const userDataPromise = useLoaderData();
-  // console.log(userDataPromise);
-
-  const { userData } = useOutletContext();
-
+const RidesPage = ({ revalidator, onEdit, userData }) => {
   return (
     <>
       <div className="container">
-        <UserDetails userData={userData} />
+        <UserDetails
+          userData={userData}
+          revalidator={revalidator}
+          onEdit={onEdit}
+        />
 
         <RidesForm />
       </div>
