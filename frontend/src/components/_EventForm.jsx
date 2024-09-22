@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-export default function EventForm({ inputData, onSubmit, children }) {
+export default function TestEventForm({ inputData, onSubmit, children }) {
   function handleSubmit(event) {
     event.preventDefault();
 

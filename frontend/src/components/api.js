@@ -286,6 +286,7 @@ export async function sleep(ms) {
 export async function getUserData() {
   const storeOne = localStorage.getItem("Auth");
   const storeTwo = JSON.parse(storeOne);
-  const userResult = storeTwo.user;
+  console.log(storeTwo);
+  const userResult = storeTwo;
   return userResult;
 }

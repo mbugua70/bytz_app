@@ -12,16 +12,16 @@ import DaySummaryForm from "./daysummaryform";
 //     return defer({userData: getUserData()});
 // }
 
-const DaySummaryPage = () => {
-  // const userDataPromise = useLoaderData();
-  // console.log(userDataPromise);
-
-  const { userData } = useOutletContext();
-
+const DaySummaryPage = ({ revalidator, onEdit, userData }) => {
+  console.log(userData);
   return (
     <>
       <div className="container">
-        <UserDetails userData={userData} />
+        <UserDetails
+          userData={userData}
+          revalidator={revalidator}
+          onEdit={onEdit}
+        />
         <DaySummaryForm />
       </div>
     </>

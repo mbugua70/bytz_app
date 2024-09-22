@@ -8,66 +8,29 @@ import Modal from "../UI/Modal.jsx";
 import LoadingIndicator from "../UI/Loadingindicator.jsx";
 import ErrorBlock from "../UI/ErrorBlock.jsx";
 
-export default function EditEvent() {
+export default function EditEvent({ userData, onClose, onUpdate, isError }) {
   const navigate = useNavigate();
-
-  const { userData } = useOutletContext();
+  let isPending = false;
   console.log(userData);
 
-  const { data, isError, isPending, error } = useQuery({
-    queryKey: ["user", userData],
-    queryFn: (signal) => fetchUser(userData, signal),
-  });
-
-  const { mutate } = useMutation({
-    mutationFn: updateUser,
-    // onMutate will be exercuted instantly right before you get back a response from the updating function
-    //  it will be called immediately once the mutate function is called.
-    onMutate: async (data) => {
-      const newEventData = data.user;
-      console.log(newEventData);
-
-      await queryClient.cancelQueries({
-        queryKey: ["user", userData],
-      });
-      // the use of getQueryData to get the data
-      // takes the queryKey as its parameter
-      // it gets the previousOld data
-      const previousData = queryClient.getQueryData(["user", userData]);
-      queryClient.setQueryData(["user", userData], {...previousData, ...newEventData});
-
-      // inorder for the previousData to be part of the context we should return it
-      return { previousData };
-    },
-    //  has callback fun as its property
-    // the callBack fun has three parameter
-    // 1. error
-    // 2. newData
-    // 3. context method
-    onError: (error, data, context) => {
-      console.error("Error in mutation:", error);
-      queryClient.setQueryData(["user", userData], context.previousData);
-    },
-    // always refetch after error or success
-    onSettled: (data) => {
-      console.log("Mutation settled with data:", data);
-      queryClient.invalidateQueries(["user", userData]);
-    },
-  });
-
   function handleSubmit(formData) {
-    mutate({ id: userData, user: formData });
-    navigate("..");
-  }
-
-  function handleClose() {
-    navigate("../");
+    const name = formData.ba_name;
+    const phone = formData.ba_phone;
+    const region = formData.ba_region;
+    const updatedUserData = {
+      ...userData,
+      ba_name: name,
+      ba_phone: phone,
+      ba_region: region,
+    };
+    onUpdate(updatedUserData);
+    isPending = true;
+    onClose();
   }
 
   let content;
 
-  if (isPending) {
-
+  if (!isPending) {
     content = (
       <div className="center">
         <LoadingIndicator />
@@ -76,7 +39,6 @@ export default function EditEvent() {
   }
 
   if (isError) {
-    console.log("Error client working");
     console.log(isError);
     console.log(error);
     content = (
@@ -94,12 +56,12 @@ export default function EditEvent() {
     );
   }
 
-  if (data) {
+  if (userData) {
     content = (
-      <EventForm inputData={data} onSubmit={handleSubmit}>
-        <Link to=".." className="button-text">
+      <EventForm inputData={userData} onSubmit={handleSubmit}>
+        <button className="button-text" onClick={onClose}>
           Cancel
-        </Link>
+        </button>
         <button type="submit" className="button">
           Update
         </button>
@@ -107,6 +69,6 @@ export default function EditEvent() {
     );
   }
 
-  return <Modal onClose={handleClose}>{content}</Modal>;
+  return <Modal onClose={onClose}>{content}</Modal>;
   // return <h1>Edit Me</h1>;
 }

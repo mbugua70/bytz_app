@@ -2,35 +2,37 @@
 import {Suspense} from 'react'
 import { getUserData } from "./api";
 import { requireAuth } from "./utilis";
-import {useLoaderData, Await, defer, Outlet} from 'react-router-dom'
+import {
+  useLoaderData,
+  Await,
+  defer,
+  Outlet,
+  useRevalidator,
+} from "react-router-dom";
 
 // import SurveyPage from "./survey"
 
-
-export async function loader ({request}) {
-    await requireAuth(request)
-    return defer({userData: getUserData()});
+export async function loader({ request }) {
+  await requireAuth(request);
+  return defer({ userData: getUserData() });
 }
 
-const SurveyLayout = () =>{
+const SurveyLayout = () => {
+  let revalidator = useRevalidator();
 
-    const userDataPromise = useLoaderData();
+  const userDataPromise = useLoaderData();
 
-    return(
-        <>
-       <Suspense fallback={<h6>Loading user data....</h6>}>
-       <Await resolve={userDataPromise.userData}>
-                {userData => {
-                    return(
-                    <Outlet context={{userData}} />
-
-                    )
-                }}
-            </Await>
-
-        </Suspense>
-        </>
-    )
-}
+  return (
+    <>
+      <Suspense fallback={<h6>Loading user data....</h6>}>
+        <Await resolve={userDataPromise.userData}>
+          {(userData) => {
+            return <Outlet context={{ userData, revalidator }} />;
+          }}
+        </Await>
+      </Suspense>
+    </>
+  );
+};
 
 export default SurveyLayout;

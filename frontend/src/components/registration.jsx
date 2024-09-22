@@ -75,6 +75,7 @@ const notifyError = (msg) => {
     position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
+    closeButton: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
