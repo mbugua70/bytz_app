@@ -40,7 +40,7 @@ export const action = async ({ request }) => {
 
     const workout = { ba_name, ba_phone, ba_region };
 
-    localStorage.setItem("Auth", JSON.stringify({ user: workout }));
+    localStorage.setItem("Auth", JSON.stringify(workout));
 
     const storeOne = localStorage.getItem("Auth");
     const storeTwo = JSON.parse(storeOne);
@@ -134,9 +134,7 @@ const RegistrationPage = () => {
                   name="ba_name"
                   placeholder="Your Name"
                   type="text"
-                  defaultValue={
-                    storeBaTwo === null ? "" : storeBaTwo.user.ba_name
-                  }
+                  defaultValue={storeBaTwo === null ? "" : storeBaTwo.ba_name}
                 />
               </div>
               <div className="input-field col s12">
@@ -147,9 +145,7 @@ const RegistrationPage = () => {
                   name="ba_phone"
                   placeholder="Your Phone Number"
                   type="tel"
-                  defaultValue={
-                    storeBaTwo === null ? "" : storeBaTwo.user.ba_phone
-                  }
+                  defaultValue={storeBaTwo === null ? "" : storeBaTwo.ba_phone}
                 />
               </div>
               <div className="input-field col s12">
@@ -161,7 +157,7 @@ const RegistrationPage = () => {
                   placeholder="Location"
                   type="text"
                   defaultValue={
-                    storeBaTwo === null ? "" : storeBaTwo.user.ba_region
+                    storeBaTwo === null ? "" : storeBaTwo.ba_region
                   }
                 />
               </div>
