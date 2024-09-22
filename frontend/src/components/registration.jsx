@@ -44,7 +44,7 @@ export const action = async ({ request }) => {
 
     const storeOne = localStorage.getItem("Auth");
     const storeTwo = JSON.parse(storeOne);
-    const isUser = storeTwo.user;
+    const isUser = storeTwo;
 
     // const data = await loginUser(workout);
     if (isUser) {
