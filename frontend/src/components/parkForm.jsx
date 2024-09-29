@@ -8,6 +8,7 @@ import { parkForm } from "./api";
 import { OfflineContext } from "../contextApi/offline_context";
 import useOnlineStatus from "../custom_hook/useOffline";
 import { FormContext } from "../contextApi/selectelement_context";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ParkForm = () => {
   const { state, dispatch } = useContext(FormContext);
@@ -40,41 +41,44 @@ const ParkForm = () => {
   const { isSubmitSuccessful, isSubmitting } = formState;
 
   const onSubmit = async (data) => {
-
-      try {
-        const {sub_1_1, sub_1_2, sub_1_3, sub_1_4, sub_1_5} = data;
-        if(sub_1_1 === "" || sub_1_2 === "" || sub_1_3 === "" || sub_1_4 === "" || sub_1_5 === "") {
-          event.preventDefault();
-          toast.error("Please fill in all the required fields!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Slide,
-          });
-        }else{
-          const response = await parkForm(data);
-          if (response) {
-            const MySwal = withReactContent(Swal);
-            MySwal.fire({
-              html: <i>Your data has been submitted successfully!</i>,
-              icon: "success",
-            });
-          }
-        }
-
-      } catch (err) {
-        const MySwal = withReactContent(Swal);
-        MySwal.fire({
-          html: <i>{err.message}</i>,
-          icon: "error",
+    try {
+      const { sub_1_1, sub_1_2, sub_1_3, sub_1_4, sub_1_5 } = data;
+      if (
+        sub_1_1 === "" ||
+        sub_1_2 === "" ||
+        sub_1_3 === "" ||
+        sub_1_4 === "" ||
+        sub_1_5 === ""
+      ) {
+        event.preventDefault();
+        toast.error("Please fill in all the required fields!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Slide,
         });
+      } else {
+        const response = await parkForm(data);
+        if (response) {
+          const MySwal = withReactContent(Swal);
+          MySwal.fire({
+            html: <i>Your data has been submitted successfully!</i>,
+            icon: "success",
+          });
+        }
       }
-
+    } catch (err) {
+      const MySwal = withReactContent(Swal);
+      MySwal.fire({
+        html: <i>{err.message}</i>,
+        icon: "error",
+      });
+    }
   };
 
   React.useEffect(() => {
@@ -220,35 +224,49 @@ const ParkForm = () => {
               </select>
             </div>
 
-            {state.showNoQuestion && isShowQuestion && (
-              <div className="input-field col s12">
-                <span>2. Reason for Yes</span>
-                <br />
-                <input
-                  id="sub_1_9"
-                  name="sub_1_9"
-                  title="YES"
-                  type="text"
-                  placeholder="Reason for yes"
-                  {...register("sub_1_9")}
-                />
-              </div>
-            )}
+            <AnimatePresence mode="wait">
+              {state.showNoQuestion && isShowQuestion && (
+                <motion.div
+                  key="list yes"
+                  className="input-field col s12"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                >
+                  <span>2. Reason for Yes</span>
+                  <br />
+                  <input
+                    id="sub_1_9"
+                    name="sub_1_9"
+                    title="YES"
+                    type="text"
+                    placeholder="Reason for yes"
+                    {...register("sub_1_9")}
+                  />
+                </motion.div>
+              )}
 
-            {!state.showNoQuestion && isShowQuestion && (
-              <div className="input-field col s12">
-                <span>3. Reason for No</span>
-                <br />
-                <input
-                  id="sub_1_10"
-                  name="sub_1_10"
-                  title="NO"
-                  type="text"
-                  placeholder="Reason for no"
-                  {...register("sub_1_10")}
-                />
-              </div>
-            )}
+              {!state.showNoQuestion && isShowQuestion && (
+                <motion.div
+                  className="input-field col s12"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  key="list no"
+                  exit={{ opacity: 0, y: -30 }}
+                >
+                  <span>3. Reason for No</span>
+                  <br />
+                  <input
+                    id="sub_1_10"
+                    name="sub_1_10"
+                    title="NO"
+                    type="text"
+                    placeholder="Reason for no"
+                    {...register("sub_1_10")}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <h1>Questionnaire</h1>
 

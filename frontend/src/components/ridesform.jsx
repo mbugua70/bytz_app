@@ -8,6 +8,7 @@ import { testridesForm } from "./api";
 import { OfflineContext } from "../contextApi/offline_context";
 import { FormContext } from "../contextApi/selectelement_context";
 import useOnlineStatus from "../custom_hook/useOffline";
+import { motion, AnimatePresence } from "framer-motion";
 
 const SurveyForm = () => {
   const [isQuestion, setisQuestion] = useState(false);
@@ -150,7 +151,6 @@ const SurveyForm = () => {
                 name="sub_1_2"
                 placeholder="day"
                 type="text"
-
                 {...register("sub_1_2")}
               />
             </div>
@@ -279,29 +279,37 @@ const SurveyForm = () => {
               </select>
             </div>
 
-            {state.showNoQuestion && (
-              <div className="input-field col s12">
-                <span>
-                  6. If it is riders own vehicle - is it paid up in Cash or on
-                  Loan?
-                </span>
-                <br />
-                <select
-                  name="sub_1_12"
-                  id="sub_1_12"
-                  style={{ display: "block" }}
-                  {...register("sub_1_12")}
+            <AnimatePresence>
+              {state.showNoQuestion && (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  className="input-field col s12"
                 >
-                  <option value="">Select your answer</option>
-                  <option id="cash" value="cash">
-                    cash
-                  </option>
-                  <option id="loan" value="loan">
-                    loan
-                  </option>
-                </select>
-              </div>
-            )}
+                  <span>
+                    6. If it is riders own vehicle - is it paid up in Cash or on
+                    Loan?
+                  </span>
+                  <br />
+                  <select
+                    name="sub_1_12"
+                    id="sub_1_12"
+                    style={{ display: "block" }}
+                    {...register("sub_1_12")}
+                  >
+                    <option value="">Select your answer</option>
+                    <option id="cash" value="cash">
+                      cash
+                    </option>
+                    <option id="loan" value="loan">
+                      loan
+                    </option>
+                  </select>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <h1>Rider Feedback</h1>
 
