@@ -381,7 +381,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    animation: slide-down-fade-in 300ms ease-out forwards;
+    /* animation: slide-down-fade-in 300ms ease-out forwards; */
   }
 
   .modal::backdrop {
@@ -423,3 +423,15 @@
       transform: translateY(0);
     }
   }
+
+  /* backdrop styling */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9;
+}

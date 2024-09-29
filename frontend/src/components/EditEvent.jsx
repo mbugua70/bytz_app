@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchUser, updateUser, queryClient } from "../util/http.js";
 import { useOutletContext } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import EventForm from "./EventForm.jsx";
 import Modal from "../UI/Modal.jsx";
@@ -59,12 +60,24 @@ export default function EditEvent({ userData, onClose, onUpdate, isError }) {
   if (userData) {
     content = (
       <EventForm inputData={userData} onSubmit={handleSubmit}>
-        <button className="button-text" onClick={onClose}>
+        <motion.button
+          className="button-text"
+          onClick={onClose}
+          whileTap={{ scale: 1.3 }}
+          whileHover={{ scale: 1.3 }}
+          transition={{ type: "spring" }}
+        >
           Cancel
-        </button>
-        <button type="submit" className="button">
+        </motion.button>
+        <motion.button
+          type="submit"
+          className="button"
+          whileTap={{ scale: 1.3 }}
+          whileHover={{ scale: 1.3 }}
+          transition={{ type: "spring" }}
+        >
           Update
-        </button>
+        </motion.button>
       </EventForm>
     );
   }

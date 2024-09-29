@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const UserDetails = ({ userData, revalidator, onEdit }) => {
   const location = useLocation();
@@ -7,14 +8,29 @@ const UserDetails = ({ userData, revalidator, onEdit }) => {
 
   return (
     <>
-      <div className="card-panel">
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, x: -100 },
+          visible: { opacity: 1, x: 0 },
+        }}
+        initial="hidden"
+        animate="visible"
+        transition={{ type: "tween", delay: 0.2 }}
+        className="card-panel"
+      >
         {/* <Link className="editButton" to={`${pathname}/edit`}>
           Edit
         </Link> */}
 
-        <button className="editButton" onClick={onEdit}>
+        <motion.button
+          className="editButton"
+          whileTap={{ scale: 1.3 }}
+          whileHover={{ scale: 1.3 }}
+          transition={{ type: "spring" }}
+          onClick={onEdit}
+        >
           Edit
-        </button>
+        </motion.button>
 
         <h4>Personal Information</h4>
         <div className="profile">
@@ -103,7 +119,7 @@ const UserDetails = ({ userData, revalidator, onEdit }) => {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

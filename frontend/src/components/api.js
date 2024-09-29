@@ -65,9 +65,9 @@ export async function testridesForm(test) {
   const storeOne = localStorage.getItem("Auth");
   const storeTwo = JSON.parse(storeOne);
 
-  const nameEl = storeTwo.user.ba_name;
-  const PhoneEl = storeTwo.user.ba_phone;
-  const locationsEl = storeTwo.user.ba_region;
+  const nameEl = storeTwo.ba_name;
+  const PhoneEl = storeTwo.ba_phone;
+  const locationsEl = storeTwo.ba_region;
 
   const data_one = { ...test };
 
@@ -107,9 +107,9 @@ export async function fleetForm(test) {
   const storeOne = localStorage.getItem("Auth");
   const storeTwo = JSON.parse(storeOne);
 
-  const nameEl = storeTwo.user.ba_name;
-  const PhoneEl = storeTwo.user.ba_phone;
-  const locationsEl = storeTwo.user.ba_region;
+  const nameEl = storeTwo.ba_name;
+  const PhoneEl = storeTwo.ba_phone;
+  const locationsEl = storeTwo.ba_region;
 
   const data_one = { ...test };
 
@@ -151,9 +151,9 @@ export async function summaryForm(test) {
   const storeOne = localStorage.getItem("Auth");
   const storeTwo = JSON.parse(storeOne);
 
-  const nameEl = storeTwo.user.ba_name;
-  const PhoneEl = storeTwo.user.ba_phone;
-  const locationsEl = storeTwo.user.ba_region;
+  const nameEl = storeTwo.ba_name;
+  const PhoneEl = storeTwo.ba_phone;
+  const locationsEl = storeTwo.ba_region;
   console.log(nameEl, PhoneEl, locationsEl);
   const data_one = { ...test };
 
@@ -193,9 +193,9 @@ export async function hotleadsForm(test) {
   const storeOne = localStorage.getItem("Auth");
   const storeTwo = JSON.parse(storeOne);
 
-  const nameEl = storeTwo.user.ba_name;
-  const PhoneEl = storeTwo.user.ba_phone;
-  const locationsEl = storeTwo.user.ba_region;
+  const nameEl = storeTwo.ba_name;
+  const PhoneEl = storeTwo.ba_phone;
+  const locationsEl = storeTwo.ba_region;
 
   const data_one = { ...test };
 
@@ -235,10 +235,10 @@ export async function hotleadsForm(test) {
 export async function parkForm(test) {
   const storeOne = localStorage.getItem("Auth");
   const storeTwo = JSON.parse(storeOne);
-
-  const nameEl = storeTwo.user.ba_name;
-  const PhoneEl = storeTwo.user.ba_phone;
-  const locationsEl = storeTwo.user.ba_region;
+  console.log(storeTwo);
+  const nameEl = storeTwo.ba_name;
+  const PhoneEl = storeTwo.ba_phone;
+  const locationsEl = storeTwo.ba_region;
 
   const data_one = { ...test };
 

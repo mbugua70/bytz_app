@@ -45,12 +45,16 @@ const SurveyForm = () => {
   const { register, handleSubmit, reset, formState } = form;
   const { isSubmitSuccessful, isSubmitting } = formState;
 
-  const onSubmit = async (data) => {
-
+  const onSubmit = async (data, event) => {
     try {
-
-      const {sub_1_1, sub_1_2, sub_1_3, sub_1_4, sub_1_5} = data;
-      if(sub_1_1 === "" || sub_1_2 === "" || sub_1_3 === "" || sub_1_4 === "" || sub_1_5 === "") {
+      const { sub_1_1, sub_1_2, sub_1_3, sub_1_4, sub_1_5 } = data;
+      if (
+        sub_1_1 === "" ||
+        sub_1_2 === "" ||
+        sub_1_3 === "" ||
+        sub_1_4 === "" ||
+        sub_1_5 === ""
+      ) {
         event.preventDefault();
         toast.error("Please fill in all the required fields!", {
           position: "bottom-center",
@@ -63,7 +67,7 @@ const SurveyForm = () => {
           theme: "light",
           transition: Slide,
         });
-      }else{
+      } else {
         const response = await testridesForm(data);
         if (response) {
           const MySwal = withReactContent(Swal);
@@ -73,8 +77,6 @@ const SurveyForm = () => {
           });
         }
       }
-
-
     } catch (err) {
       const MySwal = withReactContent(Swal);
       MySwal.fire({
@@ -82,8 +84,10 @@ const SurveyForm = () => {
         icon: "error",
       });
     }
-
   };
+
+  console.log(isSubmitSuccessful);
+  console.log(isSubmitting);
 
   React.useEffect(() => {
     if (isSubmitSuccessful) {

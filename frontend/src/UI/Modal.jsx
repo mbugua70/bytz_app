@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
 
 export default function Modal({ children, onClose }) {
   const dialog = useRef(null); // Initialize useRef with null
@@ -21,9 +22,31 @@ export default function Modal({ children, onClose }) {
 
   // Render the modal using createPortal
   return createPortal(
-    <dialog className="modal" ref={dialog}>
-      {children}
-    </dialog>,
+    <motion.div
+      className="backdrop"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      initial="visible"
+      animate="visible"
+      exit="hidden"
+    >
+      <motion.dialog
+        className="modal"
+        ref={dialog}
+        variants={{
+          hidden: { opacity: 0, y: -30 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        initial="hidden"
+        animate="visible"
+        transition={{ type: "spring" }}
+        exit={{ opacity: 0, y: -30 }}
+      >
+        {children}
+      </motion.dialog>
+    </motion.div>,
     document.getElementById("modal") // Ensure this matches your HTML structure
   );
 }

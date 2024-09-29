@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { useRevalidator } from "react-router-dom";
+import { useAnimate, stagger } from "framer-motion";
 
 export default function EventForm({ inputData, onSubmit, children }) {
+  const [scope, animate] = useAnimate();
   let revalidator = useRevalidator();
   function handleSubmit(event) {
     event.preventDefault();
@@ -52,6 +54,11 @@ export default function EventForm({ inputData, onSubmit, children }) {
 
     if (baName === "" || baPhone === "" || baRegion === "") {
       notifyError("Please fill in all the required fields!");
+      animate(
+        "input, textarea",
+        { x: [-10, 0, 10, 0] },
+        { type: "spring", duration: 0.2, delay: stagger(0.05) }
+      );
     } else {
       revalidator.revalidate();
       onSubmit({ ...data });
@@ -60,7 +67,7 @@ export default function EventForm({ inputData, onSubmit, children }) {
   }
 
   return (
-    <form id="event-form" onSubmit={handleSubmit}>
+    <form id="event-form" onSubmit={handleSubmit} ref={scope}>
       <label htmlFor="ba_name">Name</label>
       <input
         type="text"

@@ -10,6 +10,7 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 
 import { loginUser } from "./api";
 import { useEffect } from "react";
+import { motion, useAnimate, stagger } from "framer-motion";
 
 export const loginloader = ({ request }) => {
   return new URL(request.url).searchParams.get("message");
@@ -96,12 +97,24 @@ const RegistrationPage = () => {
   const storeBa = localStorage.getItem("Auth");
   const storeBaTwo = JSON.parse(storeBa);
 
+  const [scope, animate] = useAnimate();
+
+  const errorCounts = {
+    errMessage: errorMessage,
+    key: Math.random().toString(),
+  };
+
   useEffect(() => {
-    if (errorMessage) {
-      notifyError(errorMessage);
+    if (errorCounts.errMessage) {
+      notifyError(errorCounts.errMessage);
+      animate(
+        "input, textarea",
+        { x: [-10, 0, 10, 0] },
+        { type: "spring", duration: 0.2, delay: stagger(0.05) }
+      );
       console.log("rendered");
     }
-  }, [errorMessage]);
+  }, [errorCounts.errMessage, errorCounts.key]);
 
   useEffect(() => {
     if (loginLoaderMessage) {
@@ -125,7 +138,7 @@ const RegistrationPage = () => {
               </span> */}
               {/* <p className="login_errmessage">{errorMessage && errorMessage}</p> */}
             </div>
-            <Form id="parcel_form" method="post" replace>
+            <Form id="parcel_form" method="post" replace ref={scope}>
               <div className="input-field col s12">
                 <span>Name</span>
                 <br />
@@ -156,9 +169,7 @@ const RegistrationPage = () => {
                   name="ba_region"
                   placeholder="Location"
                   type="text"
-                  defaultValue={
-                    storeBaTwo === null ? "" : storeBaTwo.ba_region
-                  }
+                  defaultValue={storeBaTwo === null ? "" : storeBaTwo.ba_region}
                 />
               </div>
               <div className="input-field col s12 center_it">
