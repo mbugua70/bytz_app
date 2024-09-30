@@ -573,33 +573,44 @@ const SurveyForm = () => {
               </select>
             </div>
 
-            {state.showNoQuestion && isQuestion && (
-              <div className="input-field col s12">
-                <span>8. Reason for Yes</span>
-                <br />
-                <input
-                  id="sub_1_20"
-                  name="sub_1_20"
-                  placeholder="YES"
-                  type="text"
-                  {...register("sub_1_20")}
-                />
-              </div>
-            )}
+            <AnimatePresence mode="wait">
+              {state.showNoQuestion && isQuestion && (
+                <motion.div
+                  key="list yes"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  className="input-field col s12"
+                >
+                  <span>8. Reason for Yes</span>
+                  <br />
+                  <input
+                    id="sub_1_20"
+                    name="sub_1_20"
+                    placeholder="YES"
+                    type="text"
+                    {...register("sub_1_20")}
+                  />
+                </motion.div>
+              )}
 
-            {!state.showNoQuestion && isQuestion && (
-              <div className="input-field col s12">
-                <span>9. Reason for No</span>
-                <br />
-                <input
-                  id="sub_1_21"
-                  name="sub_1_21"
-                  placeholder="NO"
-                  type="text"
-                  {...register("sub_1_21")}
-                />
-              </div>
-            )}
+              {!state.showNoQuestion && isQuestion && (
+                <motion.div className="input-field col s12" initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                key="list no"
+                exit={{ opacity: 0, y: -30 }}>
+                  <span>9. Reason for No</span>
+                  <br />
+                  <input
+                    id="sub_1_21"
+                    name="sub_1_21"
+                    placeholder="NO"
+                    type="text"
+                    {...register("sub_1_21")}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <h1>CONVERSIONS & LEADS</h1>
             <div className="input-field col s12">
