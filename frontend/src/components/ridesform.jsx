@@ -27,19 +27,6 @@ const SurveyForm = () => {
       sub_1_8: "",
       sub_1_10: "",
       sub_1_11: "",
-      sub_1_12: "",
-      sub_1_13: "",
-      sub_1_14: "",
-      sub_1_15: "",
-      sub_1_16: "",
-      sub_1_17: "",
-      sub_1_18: "",
-      sub_1_19: "",
-      sub_1_20: "",
-      sub_1_21: "",
-      sub_1_22: "",
-      sub_1_23: "",
-      sub_1_24: "",
     },
   });
 
@@ -129,538 +116,79 @@ const SurveyForm = () => {
             method="post"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1>LOCATION DETAILS</h1>
-
-            <div className="input-field col s12">
-              <span>Date</span>
-              <br />
-              <input
-                id="sub_1_1"
-                name="sub_1_1"
-                placeholder="Date"
-                type="date"
-                {...register("sub_1_1")}
-              />
-            </div>
-
-            <div className="input-field col s12">
-              <span>Day</span>
-              <br />
-              <input
-                id="sub_1_2"
-                name="sub_1_2"
-                placeholder="day"
-                type="text"
-                {...register("sub_1_2")}
-              />
-            </div>
-            <div className="input-field col s12">
-              <span>District</span>
-              <br />
-              <input
-                id="sub_1_3"
-                name="sub_1_3"
-                placeholder="district"
-                type="text"
-                {...register("sub_1_3")}
-              />
-            </div>
-
-            <div className="input-field col s12">
-              <span>Executive Name </span>
-              <br />
-              <input
-                id="sub_1_4"
-                name="sub_1_4"
-                placeholder="Executive Name"
-                type="text"
-                {...register("sub_1_4")}
-              />
-            </div>
-
-            <div className="input-field col s12">
-              <span>Taxi Rank/Park Name</span>
-              <br />
-              <input
-                id="sub_1_5"
-                name="sub_1_5"
-                placeholder="Taxi Rank/Park Name"
-                type="text"
-                {...register("sub_1_5")}
-              />
-            </div>
-
             <h1>Questionnaire</h1>
 
             <div className="input-field col s12">
-              <span>1. CNG Vehicle Registration</span>
+              <span>1. Promoter Name</span>
               <br />
-              <input
-                id="sub_1_6"
-                name="sub_1_6"
-                placeholder="RSM"
-                type="text"
-                {...register("sub_1_6")}
-              />
-            </div>
-
-            <h1>Rider Details</h1>
-
-            <div className="input-field col s12">
-              <span>1. Rider Name</span>
-              <br />
-              <input
-                id="sub_1_7"
-                name="sub_1_7"
-                placeholder="Rider Name"
-                type="text"
-                {...register("sub_1_7")}
-              />
+              <input id="sub_1_1" name="sub_1_1" placeholder="Promoter Name" type="text"  {...register("sub_1_1")}/>
             </div>
 
             <div className="input-field col s12">
-              <span>2. Rider Contact</span>
+              <span>2. Date</span>
               <br />
-              <input
-                id="sub_1_8"
-                name="sub_1_8"
-                placeholder="Rider Contact"
-                type="tel"
-                {...register("sub_1_8")}
-              />
+              <input id="sub_1_2" name="sub_1_2" placeholder="Date" type="date" {...register("sub_1_2")}/>
             </div>
 
             <div className="input-field col s12">
-              <span>3. Vehicle Name</span>
+              <span>3. Customer Name</span>
               <br />
-              <input
-                id="sub_1_9"
-                name="sub_1_9"
-                placeholder="Vehicle Name"
-                type="text"
-                {...register("sub_1_9")}
-              />
+              <input id="sub_1_3" name="sub_1_3" placeholder="Enter Name" type="text" {...register("sub_1_3")}/>
             </div>
 
             <div className="input-field col s12">
-              <span>4. Age of Vehicle?</span>
-              <br />
-              <input
-                id="sub_1_10"
-                name="sub_1_10"
-                placeholder="Age of Vehicle"
-                type="text"
-                {...register("sub_1_10")}
-              />
-            </div>
-
-            {/* display state */}
-
-            <div className="input-field col s12">
-              <span>5. Is it own vehicle or rental/hire purchase?</span>
-              <br />
-              <select
-                name="sub_1_11"
-                id="sub_1_11"
-                onInput={handleSelectElement}
-                style={{ display: "block" }}
-                {...register("sub_1_11")}
-              >
-                <option value="">Select your answer</option>
-                <option id="own vehicle" value="own vehicle">
-                  Own vehicle
-                </option>
-                <option id="rental" value="rental">
-                  Rental
-                </option>
-                <option id="hire purchase" value="hire purchase">
-                  Hire purchase
-                </option>
-              </select>
-            </div>
-
-            <AnimatePresence>
-              {state.showNoQuestion && (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
-                  className="input-field col s12"
-                >
-                  <span>
-                    6. If it is riders own vehicle - is it paid up in Cash or on
-                    Loan?
-                  </span>
-                  <br />
-                  <select
-                    name="sub_1_12"
-                    id="sub_1_12"
-                    style={{ display: "block" }}
-                    {...register("sub_1_12")}
-                  >
-                    <option value="">Select your answer</option>
-                    <option id="cash" value="cash">
-                      cash
-                    </option>
-                    <option id="loan" value="loan">
-                      loan
-                    </option>
-                  </select>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <h1>Rider Feedback</h1>
-
-            <div className="input-field col s12">
-              <span>
-                1. What is your overal key feedback on RE Petrol & CNG
-              </span>
-              <br />
-              <input
-                id="sub_1_13"
-                name="sub_1_13"
-                placeholder="Re Petrol & CNG feedback"
-                type="text"
-                {...register("sub_1_13")}
-              />
+              <span>4. Phone Number</span>
+              <br/>
+              <input id="sub_1_4" name="sub_1_4" placeholder="Phone Number" type="tel" {...register("sub_1_4")}/>
             </div>
 
             <div className="input-field col s12">
-              <span>
-                2. Petrol tank size 8 ltr ( 1 to 10, 10 means excellent, 1 means
-                poor)
-              </span>
+              <span>5. Registartion Number</span>
               <br />
-              <select
-                name="sub_1_14"
-                id="sub_1_14"
-                style={{ display: "block" }}
-                {...register("sub_1_14")}
-              >
-                <option value="">Select your answer</option>
-                <option id="" value="1">
-                  1
-                </option>
-                <option id="" value="2">
-                  2
-                </option>
-                <option id="" value="3">
-                  3
-                </option>
-                <option id="" value="4">
-                  4
-                </option>
-                <option id="" value="5">
-                  5
-                </option>
-                <option id="" value="6">
-                  6
-                </option>
-                <option id="" value="7">
-                  7
-                </option>
-                <option id="" value="8">
-                  8
-                </option>
-                <option id="" value="9">
-                  9
-                </option>
-                <option id="" value="10">
-                  10
-                </option>
-              </select>
+              <input id="sub_1_5" name="sub_1_5" placeholder="Registartion Number" type="text"  {...register("sub_1_5")}/>
+
             </div>
+
+
             <div className="input-field col s12">
-              <span>
-                3. CNG size 4KG ( 1 to 10, 10 means excellent, 1 means poor)
-              </span>
+              <span>6. District</span>
               <br />
-              <select
-                name="sub_1_15"
-                id="sub_1_15"
-                style={{ display: "block" }}
-                {...register("sub_1_15")}
-              >
-                <option value="">Select your answer</option>
-                <option id="" value="1">
-                  1
-                </option>
-                <option id="" value="2">
-                  2
-                </option>
-                <option id="" value="3">
-                  3
-                </option>
-                <option id="" value="4">
-                  4
-                </option>
-                <option id="" value="5">
-                  5
-                </option>
-                <option id="" value="6">
-                  6
-                </option>
-                <option id="" value="7">
-                  7
-                </option>
-                <option id="" value="8">
-                  8
-                </option>
-                <option id="" value="9">
-                  9
-                </option>
-                <option id="" value="10">
-                  10
-                </option>
-              </select>
+              <input id="sub_1_6" name="sub_1_6" placeholder="District" type="text" {...register("sub_1_6")}/>
+            </div>
+
+
+            <div className="input-field col s12">
+              <span>7. Location</span>
+              <br />
+              <input id="sub_1_7" name="sub_1_7" placeholder="Location" type="text" {...register("sub_1_7")}/>
             </div>
 
             <div className="input-field col s12">
-              <span>4. Power( 1 to 10, 10 means excellent, 1 means poor)</span>
+              <span>8. Near BY Landmark</span>
               <br />
-              <select
-                name="sub_1_16"
-                id="sub_1_16"
-                style={{ display: "block" }}
-                {...register("sub_1_16")}
-              >
-                <option value="">Select your answer</option>
-                <option id="" value="1">
-                  1
-                </option>
-                <option id="" value="2">
-                  2
-                </option>
-                <option id="" value="3">
-                  3
-                </option>
-                <option id="" value="4">
-                  4
-                </option>
-                <option id="" value="5">
-                  5
-                </option>
-                <option id="" value="6">
-                  6
-                </option>
-                <option id="" value="7">
-                  7
-                </option>
-                <option id="" value="8">
-                  8
-                </option>
-                <option id="" value="9">
-                  9
-                </option>
-                <option id="" value="10">
-                  10
-                </option>
-              </select>
+              <input id="sub_1_8" name="sub_1_8" placeholder="E.g Mosque" type="text" {...register("sub_1_8")}/>
+            </div>
+
+            <h2>STOCK PURCHASED</h2>
+
+            <div className="input-field col s12">
+              <span>1. 1L</span>
+              <br />
+              <input id="sub_1_9" name="sub_1_9" placeholder="Enter 1L stock purchased" type="text"  {...register("sub_1_9")}/>
             </div>
 
             <div className="input-field col s12">
-              <span>
-                5. Range performance ( means distance travel due to 8ltr petrol
-                and CNG) ( 1 to 10, 10 means excellent, 1 means poor)
-              </span>
+              <span>2. 0.5L</span>
               <br />
-              <select
-                name="sub_1_17"
-                id="sub_1_17"
-                style={{ display: "block" }}
-                {...register("sub_1_17")}
-              >
-                <option value="">Select your answer</option>
-                <option id="" value="1">
-                  1
-                </option>
-                <option id="" value="2">
-                  2
-                </option>
-                <option id="" value="3">
-                  3
-                </option>
-                <option id="" value="4">
-                  4
-                </option>
-                <option id="" value="5">
-                  5
-                </option>
-                <option id="" value="6">
-                  6
-                </option>
-                <option id="" value="7">
-                  7
-                </option>
-                <option id="" value="8">
-                  8
-                </option>
-                <option id="" value="9">
-                  9
-                </option>
-                <option id="" value="10">
-                  10
-                </option>
-              </select>
+              <input id="sub_1_10" name="sub_1_10" placeholder="Enter 0.5L stock purchased" type="text" {...register("sub_1_10")}/>
             </div>
 
-            <div className="input-field col s12">
-              <span>
-                6. Price offer( 1 to 10, 10 means excellent, 1 means poor)
-              </span>
-              <br />
-              <select
-                name="sub_1_18"
-                id="sub_1_18"
-                style={{ display: "block" }}
-                {...register("sub_1_18")}
-              >
-                <option value="">Select your answer</option>
-                <option id="" value="1">
-                  1
-                </option>
-                <option id="" value="2">
-                  2
-                </option>
-                <option id="" value="3">
-                  3
-                </option>
-                <option id="" value="4">
-                  4
-                </option>
-                <option id="" value="5">
-                  5
-                </option>
-                <option id="" value="6">
-                  6
-                </option>
-                <option id="" value="7">
-                  7
-                </option>
-                <option id="" value="8">
-                  8
-                </option>
-                <option id="" value="9">
-                  9
-                </option>
-                <option id="" value="10">
-                  10
-                </option>
-              </select>
-            </div>
-
-            {/* state display management */}
+            <h2>G BOOSTY ENERGY</h2>
 
             <div className="input-field col s12">
-              <span>7. Will You Recommend / Consider CNG ?</span>
+              <span>1. Apple</span>
               <br />
-              <select
-                name="sub_1_19"
-                id="sub_1_19"
-                onInput={handleSelectElementTwo}
-                style={{ display: "block" }}
-                {...register("sub_1_19")}
-              >
-                <option value="">Select your answer</option>
-                <option id="yes" value="yes">
-                  Yes
-                </option>
-                <option id="no" value="no">
-                  No
-                </option>
-              </select>
-            </div>
-
-            <AnimatePresence mode="wait">
-              {state.showNoQuestion && isQuestion && (
-                <motion.div
-                  key="list yes"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
-                  className="input-field col s12"
-                >
-                  <span>8. Reason for Yes</span>
-                  <br />
-                  <input
-                    id="sub_1_20"
-                    name="sub_1_20"
-                    placeholder="YES"
-                    type="text"
-                    {...register("sub_1_20")}
-                  />
-                </motion.div>
-              )}
-
-              {!state.showNoQuestion && isQuestion && (
-                <motion.div className="input-field col s12" initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                key="list no"
-                exit={{ opacity: 0, y: -30 }}>
-                  <span>9. Reason for No</span>
-                  <br />
-                  <input
-                    id="sub_1_21"
-                    name="sub_1_21"
-                    placeholder="NO"
-                    type="text"
-                    {...register("sub_1_21")}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <h1>CONVERSIONS & LEADS</h1>
-            <div className="input-field col s12">
-              <span>1. Are you willing to Buy the New CNG?</span>
-              <br />
-              <select
-                name="sub_1_22"
-                id="sub_1_22"
-                style={{ display: "block" }}
-                {...register("sub_1_22")}
-              >
-                <option value="">Select your answer</option>
-                <option id="yes" value="yes">
-                  Yes
-                </option>
-                <option id="no" value="no">
-                  No
-                </option>
-              </select>
-            </div>
-
-            <div className="input-field col s12">
-              <span>2. When would you like to buy it (days / months)?</span>
-              <br />
-              <input
-                id="sub_1_23"
-                name="sub_1_23"
-                placeholder="Days/ Months"
-                type="text"
-                {...register("sub_1_23")}
-              />
-            </div>
-
-            <div className="input-field col s12">
-              <span>3. Hot leads (Yes (1-2 months) / NO)?</span>
-              <br />
-              <select
-                name="sub_1_24"
-                id="sub_1_24"
-                style={{ display: "block" }}
-                {...register("sub_1_24")}
-              >
-                <option value="">Select your answer</option>
-                <option id="yes" value="yes">
-                  Yes
-                </option>
-                <option id="no" value="no">
-                  No
-                </option>
-              </select>
+              <input id="sub_1_11" name="sub_1_11" placeholder="Enter your answer" type="text" {...register("sub_1_11")}/>
             </div>
 
             <div className="input-field col s12 center_it">

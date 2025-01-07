@@ -41,9 +41,9 @@ export const router = createBrowserRouter(
           action={loadingAction}
         />
 
-        <Route path="/summary" element={<SurveyLayout />} loader={survyLoader}>
+        <Route path="/fitment" element={<SurveyLayout />} loader={survyLoader}>
           <Route
-            path="/summary"
+            path="/fitment"
             element={<DayLayout />}
             loader={async ({ request }) => {
               return await requireAuth(request);
@@ -51,7 +51,7 @@ export const router = createBrowserRouter(
           >
 
             <Route
-              path="/summary/edit"
+              path="/fitment/edit"
               element={<EditEvent />}
               loader={async ({ request }) => {
                 return await requireAuth(request);
@@ -59,16 +59,16 @@ export const router = createBrowserRouter(
             />
           </Route>
         </Route>
-        <Route path="/rides" element={<SurveyLayout />} loader={survyLoader}>
+        <Route path="/retail" element={<SurveyLayout />} loader={survyLoader}>
           <Route
-            path="/rides"
+            path="/retail"
             element={<RidesLayout />}
             loader={async ({ request }) => {
               return await requireAuth(request);
             }}
           >
             <Route
-              path="/rides/edit"
+              path="/retail/edit"
               element={<EditEvent />}
               loader={async ({ request }) => {
                 return await requireAuth(request);
@@ -77,16 +77,16 @@ export const router = createBrowserRouter(
           </Route>
         </Route>
 
-        <Route path="/fleet" element={<SurveyLayout />} loader={survyLoader}>
+        <Route path="/wholesale" element={<SurveyLayout />} loader={survyLoader}>
           <Route
-            path="/fleet"
+            path="/wholesale"
             element={<FleetLayout />}
             loader={async ({ request }) => {
               return await requireAuth(request);
             }}
           >
             <Route
-              path="/fleet/edit"
+              path="/wholesale/edit"
               element={<EditEvent />}
               loader={async ({ request }) => {
                 return await requireAuth(request);
@@ -95,43 +95,6 @@ export const router = createBrowserRouter(
 
           </Route>
         </Route>
-
-        <Route path="/park" element={<SurveyLayout />} loader={survyLoader}>
-          <Route
-            path="/park"
-            element={<ParkLayout />}
-            loader={async ({ request }) => {
-              return await requireAuth(request);
-            }}
-          >
-            <Route
-              path="/park/edit"
-              element={<EditEvent />}
-              loader={async ({ request }) => {
-                return await requireAuth(request);
-              }}
-            />
-          </Route>
-        </Route>
-
-        <Route path="/hotleads" element={<SurveyLayout />} loader={survyLoader}>
-          <Route
-            path="/hotleads"
-            element={<HotleadLayout />}
-            loader={async ({ request }) => {
-              return await requireAuth(request);
-            }}
-          >
-            <Route
-              path="/hotleads/edit"
-              element={<EditEvent />}
-              loader={async ({ request }) => {
-                return await requireAuth(request);
-              }}
-            />
-          </Route>
-        </Route>
-
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Route>

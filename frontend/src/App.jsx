@@ -2,8 +2,15 @@ import ParentRouter from "./components/parentrouter";
 import {App} from "@capacitor/app"
 import { FormProvider } from "./contextApi/selectelement_context";
 import { useEffect } from "react";
+import { StatusBar, Style } from '@capacitor/status-bar';
+
+ // Hide status bar if needed
+ StatusBar.hide();
 
 const MyApp = () => {
+
+
+
   useEffect(() => {
     const handler = App.addListener("backButton", (event) => {
       if(window.location.pathname === "/") {

@@ -34,14 +34,14 @@ export async function surveyForm(test) {
   for (const key in data_one) {
     if (data_one.hasOwnProperty(key)) {
       formData.append(key, data_one[key]);
-      formData.append("place", "DAY_SUMMARY");
+      formData.append("place", "FORM_FITMENT");
       formData.append("ba_name", nameEl);
       formData.append("ba_phone", PhoneEl);
       formData.append("ba_region", locationsEl);
     }
   }
 
-  const res = await fetch("https://brandyolk.iguru.co.ke/process/BM.php", {
+  const res = await fetch("https://brandyolk.iguru.co.ke/public_html/process/BM.php", {
     method: "POST",
     headers: {
       // "Content-Type": "application/json",
@@ -61,6 +61,7 @@ export async function surveyForm(test) {
   return data;
 }
 
+// retail api
 export async function testridesForm(test) {
   const storeOne = localStorage.getItem("Auth");
   const storeTwo = JSON.parse(storeOne);
@@ -71,24 +72,30 @@ export async function testridesForm(test) {
 
   const data_one = { ...test };
 
-  const formData = new FormData();
+  // const formData = new FormData();
 
-  for (const key in data_one) {
-    if (data_one.hasOwnProperty(key)) {
-      formData.append(key, data_one[key]);
-      formData.append("place", "TEST_RIDES");
-      formData.append("ba_name", nameEl);
-      formData.append("ba_phone", PhoneEl);
-      formData.append("ba_region", locationsEl);
-    }
-  }
+  // for (const key in data_one) {
+  //   if (data_one.hasOwnProperty(key)) {
+  //     formData.append(key, data_one[key]);
+  //     formData.append("project", "RETAIL_STOCK");
+  //     formData.append("ba_name", nameEl);
+  //     formData.append("ba_phone", PhoneEl);
+  //     formData.append("ba_region", locationsEl);
+  //   }
+  // }
 
   const res = await fetch("https://brandyolk.iguru.co.ke/process/BM.php", {
     method: "POST",
     headers: {
-      // "Content-Type": "application/json",
+      "Content-Type": "application/json",
     },
-    body: formData,
+    body: JSON.stringify({
+      ...data_one,
+      project: "FORM_FITMENT",
+      ba_name: nameEl,
+      ba_phone: PhoneEl,
+      ba_region: locationsEl,
+    }),
   });
 
   const data = await res.json();
@@ -113,26 +120,33 @@ export async function fleetForm(test) {
 
   const data_one = { ...test };
 
-  const formData = new FormData();
+  // const formData = new FormData();
 
-  for (const key in data_one) {
-    if (data_one.hasOwnProperty(key)) {
-      formData.append(key, data_one[key]);
-      formData.append("place", "FLEET_OWNERS");
-      formData.append("ba_name", nameEl);
-      formData.append("ba_phone", PhoneEl);
-      formData.append("ba_region", locationsEl);
-    }
-  }
+  // for (const key in data_one) {
+  //   if (data_one.hasOwnProperty(key)) {
+  //     formData.append(key, data_one[key]);
+  //     formData.append("project", "WHOLESALE_STOCK");
+  //     formData.append("ba_name", nameEl);
+  //     formData.append("ba_phone", PhoneEl);
+  //     formData.append("ba_region", locationsEl);
+  //   }
+  // }
 
-  console.log(formData);
+  // console.log(formData);
 
   const res = await fetch("https://brandyolk.iguru.co.ke/process/BM.php", {
+    mode: 'no-cors',
     method: "POST",
     headers: {
-      // "Content-Type": "application/json",
+      "Content-Type": "application/json",
     },
-    body: formData,
+    body: JSON.stringify({
+      ...data_one,
+      project: "FORM_FITMENT",
+      ba_name: nameEl,
+      ba_phone: PhoneEl,
+      ba_region: locationsEl,
+    }),
   });
 
   const data = await res.json();
@@ -154,28 +168,41 @@ export async function summaryForm(test) {
   const nameEl = storeTwo.ba_name;
   const PhoneEl = storeTwo.ba_phone;
   const locationsEl = storeTwo.ba_region;
-  console.log(nameEl, PhoneEl, locationsEl);
   const data_one = { ...test };
 
-  const formData = new FormData();
 
-  for (const key in data_one) {
-    if (data_one.hasOwnProperty(key)) {
-      formData.append(key, data_one[key]);
-      formData.append("place", "DAY_SUMMARY");
-      formData.append("ba_name", nameEl);
-      formData.append("ba_phone", PhoneEl);
-      formData.append("ba_region", locationsEl);
-    }
-  }
+  // const formData = new FormData();
+
+  // for (const key in data_one) {
+  //   if (data_one.hasOwnProperty(key)) {
+  //     formData.append(key, data_one[key]);
+  //   }
+  // }
+
+  // formData.append("project", "FORM_FITMENT");
+  // formData.append("ba_name", nameEl);
+  // formData.append("ba_phone", PhoneEl);
+  // formData.append("ba_region", locationsEl);
+
+
 
   const res = await fetch("https://brandyolk.iguru.co.ke/process/BM.php", {
+    mode: 'no-cors',
     method: "POST",
-    headers: {
-      // "Content-Type": "application/json",
+    headers:{
+      'Content-Type': 'application/json',
     },
-    body: formData,
+    body: JSON.stringify({
+      ...data_one,
+      project: "FORM_FITMENT",
+      ba_name: nameEl,
+      ba_phone: PhoneEl,
+      ba_region: locationsEl,
+    }),
+
   });
+
+  console.log(res);
 
   const data = await res.json();
   if (!res.ok) {
@@ -213,9 +240,6 @@ export async function hotleadsForm(test) {
 
   const res = await fetch("https://brandyolk.iguru.co.ke/process/BM.php", {
     method: "POST",
-    headers: {
-      // "User-ID": userId,
-    },
     body: formData,
   });
 

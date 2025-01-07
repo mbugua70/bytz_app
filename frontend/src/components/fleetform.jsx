@@ -20,6 +20,10 @@ const FleetForm = () => {
       sub_1_5: "",
       sub_1_6: "",
       sub_1_7: "",
+      sub_1_8: "",
+      sub_1_9: "",
+      sub_1_10: "",
+      sub_1_11: "",
     },
   });
 
@@ -83,98 +87,81 @@ const FleetForm = () => {
             method="post"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1>LOCATION DETAILS</h1>
 
-            <div className="input-field col s12">
-              <span>DATE</span>
-              <br />
-              <input
-                id="sub_1_1"
-                name="sub_1_1"
-                title="Date"
-                type="date"
-                placeholder="Date"
-                {...register("sub_1_1")}
-              />
-            </div>
+           <h1>Questionnaire</h1>
 
-            <div className="input-field col s12">
-              <span>Day</span>
-              <br />
-              <input
-                id="sub_1_2"
-                name="sub_1_2"
-                title="Day"
-                type="text"
-                placeholder="Day"
-                {...register("sub_1_2")}
-              />
-            </div>
-            <div className="input-field col s12">
-              <span>District</span>
-              <br />
-              <input
-                id="sub_1_3"
-                name="sub_1_3"
-                title="District"
-                type="text"
-                placeholder="District"
-                {...register("sub_1_3")}
-              />
-            </div>
+<div className="input-field col s12">
+  <span>1. Promoter Name</span>
+  <br />
+  <input id="sub_1_1" name="sub_1_1" placeholder="Promoter Name" type="text"  {...register("sub_1_1")}/>
+</div>
 
-            <div className="input-field col s12">
-              <span>Taxi Rank/Park Name</span>
-              <br />
-              <input
-                id="sub_1_4"
-                name="sub_1_4"
-                title="Taxi Rank/Park Name"
-                type="text"
-                placeholder="Tax Rank/Park Name"
-                {...register("sub_1_4")}
-              />
-            </div>
-            <h1>FLEET OWNERS DETAILS</h1>
+<div className="input-field col s12">
+  <span>2. Date</span>
+  <br />
+  <input id="sub_1_2" name="sub_1_2" placeholder="Date" type="date" {...register("sub_1_2")}/>
+</div>
 
-            <div className="input-field col s12">
-              <span>1. Fleet Operator name?</span>
-              <br />
-              <input
-                id="sub_1_5"
-                name="sub_1_5"
-                title="Fleet Operator name"
-                type="text"
-                placeholder="Operator Name"
-                {...register("sub_1_5")}
-              />
-            </div>
+<div className="input-field col s12">
+  <span>3. Customer Name</span>
+  <br />
+  <input id="sub_1_3" name="sub_1_3" placeholder="Enter Name" type="text" {...register("sub_1_3")}/>
+</div>
 
-            <div className="input-field col s12">
-              <span>2. Fleet owner contact </span>
-              <br />
-              <input
-                id="sub_1_6"
-                name="sub_1_6"
-                title="Fleet Owner contact"
-                type="text"
-                placeholder="Owner Contact"
-                {...register("sub_1_6")}
-              />
-            </div>
+<div className="input-field col s12">
+  <span>4. Phone Number</span>
+  <br/>
+  <input id="sub_1_4" name="sub_1_4" placeholder="Phone Number" type="tel" {...register("sub_1_4")}/>
+</div>
 
-            <div className="input-field col s12">
-              <span>3. How many vehicles?</span>
-              <br />
-              <input
-                id="sub_1_7"
-                name="sub_1_7"
-                title="Number vehicle"
-                type="text"
-                placeholder="Number of vehicle"
-                {...register("sub_1_7")}
-              />
-            </div>
+<div className="input-field col s12">
+  <span>5. Registartion Number</span>
+  <br />
+  <input id="sub_1_5" name="sub_1_5" placeholder="Registartion Number" type="text"  {...register("sub_1_5")}/>
+
+</div>
+
+
+<div className="input-field col s12">
+  <span>6. District</span>
+  <br />
+  <input id="sub_1_6" name="sub_1_6" placeholder="District" type="text" {...register("sub_1_6")}/>
+</div>
+
+
+<div className="input-field col s12">
+  <span>7. Location</span>
+  <br />
+  <input id="sub_1_7" name="sub_1_7" placeholder="Location" type="text" {...register("sub_1_7")}/>
+</div>
+
+<div className="input-field col s12">
+  <span>8. Near BY Landmark</span>
+  <br />
+  <input id="sub_1_8" name="sub_1_8" placeholder="E.g Mosque" type="text" {...register("sub_1_8")}/>
+</div>
+
+<h2>STOCK PURCHASED</h2>
+
+<div className="input-field col s12">
+  <span>1. 1L</span>
+  <br />
+  <input id="sub_1_9" name="sub_1_9" placeholder="Enter 1L stock purchased" type="text"  {...register("sub_1_9")}/>
+</div>
+
+<div className="input-field col s12">
+  <span>2. 0.5L</span>
+  <br />
+  <input id="sub_1_10" name="sub_1_10" placeholder="Enter 0.5L stock purchased" type="text" {...register("sub_1_10")}/>
+</div>
+
+<h2>G BOOSTY ENERGY</h2>
+
+<div className="input-field col s12">
+  <span>1. Apple</span>
+  <br />
+  <input id="sub_1_11" name="sub_1_11" placeholder="Enter your answer" type="text" {...register("sub_1_11")}/>
+</div>
 
             <div className="input-field col s12 center_it">
               <button

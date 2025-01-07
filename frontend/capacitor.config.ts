@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'brandyolk.iguru.co.ke/three_wheeler',
-  appName: 'CNG',
+  appId: 'co.ke.byz.bajaz',
+  appName: 'bytz',
   webDir: 'dist'
 };
 
