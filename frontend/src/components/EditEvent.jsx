@@ -8,8 +8,9 @@ import EventForm from "./EventForm.jsx";
 import Modal from "../UI/Modal.jsx";
 import LoadingIndicator from "../UI/Loadingindicator.jsx";
 import ErrorBlock from "../UI/ErrorBlock.jsx";
+import ModalIonic from "../UI/Modal_Ionic.jsx";
 
-export default function EditEvent({ userData, onClose, onUpdate, isError }) {
+export default function EditEvent({ userData, onClose, onUpdate, isError,isModalOpen }) {
   const navigate = useNavigate();
   let isPending = false;
   console.log(userData);
@@ -84,4 +85,5 @@ export default function EditEvent({ userData, onClose, onUpdate, isError }) {
 
   return <Modal onClose={onClose}>{content}</Modal>;
   // return <h1>Edit Me</h1>;
+  // return <ModalIonic isModalOpen={isModalOpen}>{content}</ModalIonic>
 }

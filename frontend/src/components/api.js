@@ -40,29 +40,29 @@ export async function testridesForm(test) {
     }
   }
 
-       formData.append("project", "RETAIL_STOCK");
+      formData.append("place", "RETAIL_STOCK");
       formData.append("ba_name", nameEl);
       formData.append("ba_phone", PhoneEl);
       formData.append("ba_region", locationsEl);
 
   const res = await fetch("https://brandyolk.iguru.co.ke/process/BM.php", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: formData,
   });
 
   const data = await res.json();
-  if (!res.ok) {
-    console.log(data);
+  if (res.ok) {
+    const data = await res.text(); // Read the response as plain text
+    console.log("HTML Response:", data);
+    return data
+  }else{
     throw {
       message: data.msg,
       statusText: res.statusText,
       status: res.status,
     };
   }
-  return data;
+
 }
 
 export async function fleetForm(test) {
@@ -83,7 +83,7 @@ export async function fleetForm(test) {
     }
   }
 
-      formData.append("project", "WHOLESALE_STOCK");
+      formData.append("place", "WHOLESALE_STOCK");
       formData.append("ba_name", nameEl);
       formData.append("ba_phone", PhoneEl);
       formData.append("ba_region", locationsEl);
@@ -91,24 +91,25 @@ export async function fleetForm(test) {
 
 
   const res = await fetch("https://brandyolk.iguru.co.ke/process/BM.php", {
-    mode: 'no-cors',
+
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: formData,
   });
 
-  const data = await res.json();
-  if (!res.ok) {
-    console.log(data);
+  // const data = await res.json();
+  if (res.ok) {
+    const data = await res.text(); // Read the response as plain text
+    console.log("HTML Response:", data);
+    return data
+
+  }else{
     throw {
       message: data.msg,
       statusText: res.statusText,
       status: res.status,
     };
   }
-  return data;
+
 }
 
 export async function summaryForm(test) {
@@ -129,7 +130,7 @@ export async function summaryForm(test) {
     }
   }
 
-  formData.append("project", "FORM_FITMENT");
+  formData.append("place", "FORM_FITMENT");
   formData.append("ba_name", nameEl);
   formData.append("ba_phone", PhoneEl);
   formData.append("ba_region", locationsEl);

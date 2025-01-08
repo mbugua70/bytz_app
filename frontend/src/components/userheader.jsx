@@ -20,16 +20,12 @@ const UserHeader = () => {
           className=" topmenu centered_menu"
         >
           {pathname === "/registration" ? "Registration" : ""}
-          {pathname.includes("/park") ? "PARK MAPPING" : ""}
-          {pathname === "/park/edit" ? "PARK MAPPING" : ""}
-          {pathname.includes("/fleet") ? "FLEET OWNERS" : ""}
-          {pathname === "/fleet/edit" ? "FLEET OWNERS" : ""}
-          {pathname.includes("/rides") ? "TEST RIDES" : ""}
-          {pathname === "/rides/edit" ? "TEST RIDES" : ""}
-          {pathname.includes("/hotleads") ? "HOTLEADS REPORT" : ""}
-          {pathname === "/hotleads/edit" ? "HOTLEADS REPORT" : ""}
-          {pathname.includes("/summary") ? "Day Summary" : ""}
-          {pathname === "/summary/EDIT" ? "DAY SUMMMARY" : ""}
+          {pathname.includes("/wholesale") ? "WHOLESALE STOCK" : ""}
+          {pathname === "/wholesale/edit" ? "WHOLESALE STOCK" : ""}
+          {pathname.includes("/retail") ? "RETAIL STOCK" : ""}
+          {pathname === "/retail/edit" ? "RETAIL STOCK" : ""}
+          {pathname.includes("/fitment") ? "FORM FITMENT" : ""}
+          {pathname === "/fitment/edit" ? "FORM FITMENT" : ""}
         </motion.div>
         <div className=" topmenu right_menu">
           <Link href="index.html">
