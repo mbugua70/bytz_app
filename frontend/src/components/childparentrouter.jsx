@@ -14,7 +14,7 @@ import {action as loadingAction} from "./registration"
 // import { surveyLoader} from "./survey"
 import { loginloader} from "./registration"
 import { loader as survyLoader } from "./surveylayout";
-import SurveyForm from "./surveyform";
+
 
 import EditEvent from "./EditEvent";
 
@@ -27,8 +27,7 @@ import RidesLayout from "./rideslayout";
 import FleetLayout from "./fleetlayout";
 import DayLayout from "./daylayout"
 
-import ParkLayout from "./parkLayout"
-import HotleadLayout from "./hotleadlayout"
+
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>

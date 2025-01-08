@@ -1,7 +1,6 @@
 import { createContext, useReducer, useEffect, useCallback } from "react";
 import Dexie from "dexie";
-import useOnlineStatus from "../custom_hook/useOffline";
-import { surveyForm } from "../components/api";
+
 
 const db = new Dexie("MyDatabase");
 db.version(1).stores({

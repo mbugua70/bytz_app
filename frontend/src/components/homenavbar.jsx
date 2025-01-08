@@ -19,9 +19,9 @@ const HomeNavBar = () => {
           transition={{ type: "spring" }}
           className=" topmenu centered_menu"
         >
-          {pathname === "/" ? "CNG" : "registration"}
+          {pathname === "/" ? "BAJAJ" : "registration"}
         </motion.div>
-        <div className=" topmenu right_menu">
+        <div className=" topmenu rigt_menu">
           <Link href="index.html">
             <i className="fa fa-home fa-2x"></i>
           </Link>
