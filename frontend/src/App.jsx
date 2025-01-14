@@ -45,9 +45,7 @@ const MyApp = () => {
     <>
       {/* for importing parentRouter component below */}
       <FormProvider>
-        <IonApp>
         <ParentRouter />
-        </IonApp>
       </FormProvider>
     </>
   );

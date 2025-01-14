@@ -27,6 +27,7 @@ const SurveyForm = () => {
       sub_1_8: "",
       sub_1_10: "",
       sub_1_11: "",
+      sub_1_12: "",
     },
   });
 
@@ -189,6 +190,12 @@ const SurveyForm = () => {
               <span>1. Apple</span>
               <br />
               <input id="sub_1_11" name="sub_1_11" placeholder="Enter your answer" type="text" {...register("sub_1_11")}/>
+            </div>
+
+            <div className="input-field col s12">
+              <span>2. Classic</span>
+              <br />
+              <input id="sub_1_12" name="sub_1_12" placeholder="Enter your answer" type="text" {...register("sub_1_12")}/>
             </div>
 
             <div className="input-field col s12 center_it">
